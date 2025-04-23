@@ -20,5 +20,14 @@ namespace torneos.Controllers
       torneos.torneo = torneo;
       return torneos.Guardar();
     }
+
+    [HttpPut]
+    [Route("actualizar")]
+    public string Actualizar([FromBody] Torneo torneo)
+    {
+      clsTorneos torneos = new clsTorneos();
+      torneos.torneo = torneo;
+      return torneos.Actualizar(torneo.idTorneos, torneo);
+    }
   }
 }
