@@ -9,24 +9,24 @@
 
 namespace torneos.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class AdministradorITM
+  using Newtonsoft.Json;
+  using System;
+  using System.Collections.Generic;
+
+  public partial class AdministradorITM
+  {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public AdministradorITM()
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AdministradorITM()
-        {
-            this.Torneos = new HashSet<Torneo>();
-        }
-    
-        public int idAministradorITM { get; set; }
-        public string Documento { get; set; }
-        public string NombreCompleto { get; set; }
-        public string Usuario { get; set; }
-        public string Clave { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Torneo> Torneos { get; set; }
+      this.Torneos = new HashSet<Torneo>();
     }
+
+    public int idAministradorITM { get; set; }
+    public string Documento { get; set; }
+    public string NombreCompleto { get; set; }
+    public string Usuario { get; set; }
+    public string Clave { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Torneo> Torneos { get; set; }
+  }
 }

@@ -41,7 +41,7 @@ namespace torneos.Controllers
 
     [HttpGet]
     [Route("consultar")]
-    public List<Torneo> ConsultarComputadores(string tipo, string nombre, DateTime fecha)
+    public List<Torneo> ConsultarTorneos(string tipo, string nombre, DateTime fecha)
     {
       clsTorneos torneos = new clsTorneos();
       return torneos.ConsultarTorneos(tipo, nombre, fecha);
