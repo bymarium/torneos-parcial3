@@ -50,5 +50,27 @@ namespace torneos.Clases
         return "Error al actualizar el torneo: " + ex.Message;
       }
     }
+
+    public string Eliminar(int idTorneo)
+    {
+      try
+      {
+        Torneo torneo = dbExamen.Torneos.FirstOrDefault(e => e.idTorneos == idTorneo);
+
+        if (torneo == null)
+        {
+          return "No se encontro torneo con id: " + idTorneo;
+        }
+
+        dbExamen.Torneos.Remove(torneo);
+        dbExamen.SaveChanges();
+
+        return "¡Torneo eliminado exitosamente!";
+      }
+      catch (Exception ex)
+      {
+        return "Error al eliminar el torneo: " + ex.Message;
+      }
+    }
   }
 }
