@@ -24,5 +24,31 @@ namespace torneos.Clases
         return "Error al guardar el torneo: " + ex.Message;
       }
     }
+
+    public string Actualizar(int idTorneo, Torneo nuevosDatos)
+    {
+      try
+      {
+        Torneo torneo = dbExamen.Torneos.FirstOrDefault(e => e.idTorneos == idTorneo);
+        if (torneo == null)
+        {
+          return "No se encontró un torneo con id: " + idTorneo;
+        }
+
+        torneo.TipoTorneo = nuevosDatos.TipoTorneo;
+        torneo.NombreTorneo = nuevosDatos.NombreTorneo;
+        torneo.NombreEquipo = nuevosDatos.NombreEquipo;
+        torneo.ValorInscripcion = nuevosDatos.ValorInscripcion;
+        torneo.FechaTorneo = nuevosDatos.FechaTorneo;
+        torneo.Integrantes = nuevosDatos.Integrantes;
+
+        dbExamen.SaveChanges();
+        return "¡Torneo actualizado exitosamente!";
+      }
+      catch (Exception ex)
+      {
+        return "Error al actualizar el torneo: " + ex.Message;
+      }
+    }
   }
 }
