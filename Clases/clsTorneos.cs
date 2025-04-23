@@ -29,7 +29,7 @@ namespace torneos.Clases
     {
       try
       {
-        Torneo torneo = dbExamen.Torneos.FirstOrDefault(e => e.idTorneos == idTorneo);
+        Torneo torneo = dbExamen.Torneos.FirstOrDefault(t => t.idTorneos == idTorneo);
         if (torneo == null)
         {
           return "No se encontró un torneo con id: " + idTorneo;
@@ -55,7 +55,7 @@ namespace torneos.Clases
     {
       try
       {
-        Torneo torneo = dbExamen.Torneos.FirstOrDefault(e => e.idTorneos == idTorneo);
+        Torneo torneo = dbExamen.Torneos.FirstOrDefault(t => t.idTorneos == idTorneo);
 
         if (torneo == null)
         {
@@ -71,6 +71,22 @@ namespace torneos.Clases
       {
         return "Error al eliminar el torneo: " + ex.Message;
       }
+    }
+
+    public List<Torneo> ConsultarTorneos(string tipo, string nombre, DateTime? fecha)
+    {
+      var torneos = dbExamen.Torneos.ToList();
+
+      if (!string.IsNullOrEmpty(tipo))
+        torneos = torneos.Where(t => t.TipoTorneo.Contains(tipo)).ToList();
+
+      if (!string.IsNullOrEmpty(nombre))
+        torneos = torneos.Where(t => t.NombreTorneo.Contains(nombre)).ToList();
+
+      if (fecha.HasValue)
+        torneos = torneos.Where(t => t.FechaTorneo.Date == fecha.Value.Date).ToList();
+
+      return torneos;
     }
   }
 }
