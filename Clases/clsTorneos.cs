@@ -15,9 +15,10 @@ namespace torneos.Clases
     {
       try
       {
+        torneo.idAdministradorITM = 1;
         dbExamen.Torneos.Add(torneo);
         dbExamen.SaveChanges();
-        return "¡Torneo guardado exitosamente";
+        return "¡Torneo guardado exitosamente con id: " + torneo.idTorneos;
       }
       catch (Exception ex)
       {

@@ -10,6 +10,7 @@ using torneos.Models;
 namespace torneos.Controllers
 {
   [RoutePrefix("api/torneos")]
+  [Authorize]
   public class TorneosController : ApiController
   {
     [HttpPost]
