@@ -38,5 +38,13 @@ namespace torneos.Controllers
       torneos.torneo = torneo;
       return torneos.Eliminar(torneo.idTorneos);
     }
+
+    [HttpGet]
+    [Route("consultar")]
+    public List<Torneo> ConsultarComputadores(string tipo, string nombre, DateTime fecha)
+    {
+      clsTorneos torneos = new clsTorneos();
+      return torneos.ConsultarTorneos(tipo, nombre, fecha);
+    }
   }
 }
