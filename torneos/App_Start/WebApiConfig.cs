@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
+using torneos.Clases;
 
 namespace torneos
 {
-  public static class WebApiConfig
-  {
-    public static void Register(HttpConfiguration config)
+    public static class WebApiConfig
     {
-      // Configuración de rutas de Web API
-      config.EnableCors();
+        public static void Register(HttpConfiguration config)
+        {
+            // Configuración de rutas de Web API
+            config.EnableCors();
+            config.MessageHandlers.Add(new TokenValidationHandler());
+            config.MapHttpAttributeRoutes();
 
-      config.MapHttpAttributeRoutes();
-
-      config.Routes.MapHttpRoute(
-          name: "DefaultApi",
-          routeTemplate: "api/{controller}/{id}",
-          defaults: new { id = RouteParameter.Optional }
-      );
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+        }
     }
-  }
 }

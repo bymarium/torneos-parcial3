@@ -12,7 +12,7 @@ namespace torneos.Clases
     public Torneo torneo { get; set; }
 
     public string Guardar()
-    {//manu
+    {
       try
       {
         torneo.idAdministradorITM = 1;
